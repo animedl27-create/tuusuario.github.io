@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamBaby Lab - FelDream Atelier</title>
+  <style>
+    :root {
+      --rosa: #F5A8D0;
+      --azul: #A8C6FF;
+      --blanco: #F7F7FA;
+      --gris: #999CAF;
+      --dorado: #E7D38A;
+      --texto: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--blanco);
+      color: var(--texto);
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #dde2f0;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-placeholder {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rosa), var(--azul));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .brand-text p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--gris);
+    }
+
+    .lang-switch {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .lang-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .lang-buttons button {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--gris);
+      background: #ffffff;
+      color: var(--texto);
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .lang-buttons button.active {
+      background: var(--azul);
+      border-color: var(--azul);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .tagline {
+      font-size: 11px;
+      color: var(--gris);
+      text-align: right;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(168,198,255,0.25), rgba(245,168,208,0.35));
+      border-radius: 18px;
+      padding: 24px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    .hero h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .hero p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .hero-cta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-cta a {
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--rosa);
+      color: #ffffff;
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.9);
+      color: #ffffff;
+      background: rgba(0,0,0,0.1);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 6px 16px rgba(120,140,200,0.18);
+      font-size: 13px;
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      font-size: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #f0f2ff;
+      color: #555a80;
+    }
+
+    .sections-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 10px rgba(160,170,210,0.16);
+      font-size: 13px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 6px 0 10px;
+    }
+
+    .card a {
+      font-size: 12px;
+      text-decoration: none;
+      color: var(--azul);
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 18px 16px 28px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--gris);
+    }
+
+    .lang-block {
+      display: none;
+    }
+
+    .lang-block.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .brand {
+        width: 100%;
+      }
+      .lang-switch {
+        width: 100%;
+        align-items: flex-start;
+      }
+      .tagline {
+        text-align: left;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .sections-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+
+  <script>
+    let currentLang = "es";
+
+    function switchLang(lang) {
+      currentLang = lang;
+
+      document.querySelectorAll(".lang-block").forEach(el => {
+        el.classList.remove("active");
+      });
+      const target = document.querySelector(`.lang-${lang}`);
+      if (target) target.classList.add("active");
+
+      document.querySelectorAll(".lang-buttons button").forEach(btn => {
+        btn.classList.remove("active");
+      });
+      const btnTarget = document.querySelector(`.btn-${lang}`);
+      if (btnTarget) btnTarget.classList.add("active");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      switchLang("es");
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <!-- Sustituye src por tu logo cuando lo tengas -->
+        <div class="logo-placeholder">DB</div>
+        <div class="brand-text">
+          <h1>DreamBaby Lab</h1>
+          <p>FelDream Atelier · ABDL Together, Otaku Forever</p>
+        </div>
+      </div>
+
+      <div class="lang-switch">
+        <div class="lang-buttons">
+          <button class="btn-es" onclick="switchLang('es')">ES</button>
+          <button class="btn-en" onclick="switchLang('en')">EN</button>
+          <button class="btn-jp" onclick="switchLang('jp')">日本語</button>
+        </div>
+        <div class="tagline">
+          Digital art, ABDL aesthetics and original storytelling
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ESPAÑOL -->
+    <div class="lang-block lang-es">
+      <section class="hero">
+        <div>
+          <h2>Arte, historias y animación ABDL en un solo laboratorio creativo</h2>
+          <p>
+            Bienvenido a DreamBaby Lab, el espacio donde FelDream Atelier reúne ilustraciones,
+            novelas, diseños y videos con estética ABDL y esencia otaku, en español, inglés y japonés.
+          </p>
+          <div class="hero-badges">
+            <span class="badge">Imágenes originales</span>
+            <span class="badge">Novelas ABDL</span>
+            <span class="badge">Animaciones y clips</span>
+            <span class="badge">Trilingüe · ES · EN · 日本語</span>
+          </div>
+          <div class="hero-cta">
+            <a href="#imagenes-es" class="btn-primary">Ver imágenes</a>
+            <a href="#historias-es" class="btn-ghost">Leer historias</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>DreamBaby Lab · FelDream Atelier</h3>
+          <p>
+            Digital art, ABDL aesthetics and original storytelling.  
+            ABDL Together, Otaku Forever.
+          </p>
+          <div class="pill-row">
+            <span class="pill">ADBL friendly</span>
+            <span class="pill">Contenido original</span>
+            <span class="pill">Estilo pastel</span>
+            <span class="pill">Safe for browsing</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sections-grid">
+        <article class="card" id="imagenes-es">
+          <h3>Imágenes y galería</h3>
+          <p>
+            Ilustraciones, diseños de pañales, outfits, escenas y personajes originales
+            con estética ABDL y toques otaku.
+          </p>
+          <p>
+            Aquí irán tus miniaturas de imágenes que se abrirán en grande o enlazarán a tu galería externa.
+          </p>
+          <a href="#">Entrar a la galería</a>
+        </article>
+
+        <article class="card" id="historias-es">
+          <h3>Historias y novelas ABDL</h3>
+          <p>
+            Tus historias y proyectos largos, organizados por sagas, capítulos y versiones
+            en los tres idiomas.
+          </p>
+          <p>
+            Puedes enlazar a páginas internas o a PDFs descargables.
+          </p>
+          <a href="#">Leer historias</a>
+        </article>
+
+        <article class="card" id="videos-es">
+          <h3>Videos y animaciones</h3>
+          <p>
+            Clips de animación, montajes de imágenes y proyectos de video,
+            alojados donde tú prefieras y embebidos aquí.
+          </p>
+          <a href="#">Ver videos</a>
+        </article>
+      </section>
+    </div>
+
+    <!-- ENGLISH -->
+    <div class="lang-block lang-en">
+      <section class="hero">
+        <div>
+          <h2>ABDL art, stories and animation in one creative lab</h2>
+          <p>
+            Welcome to DreamBaby Lab, where FelDream Atelier shares artwork, novels,
+            designs and videos with ABDL aesthetics and otaku spirit in Spanish, English and Japanese.
+          </p>
+          <div class="hero-badges">
+            <span class="badge">Original artwork</span>
+            <span class="badge">ABDL stories</span>
+            <span class="badge">Animation and clips</span>
+            <span class="badge">Trilingual · ES · EN · 日本語</span>
+          </div>
+          <div class="hero-cta">
+            <a href="#images-en" class="btn-primary">View gallery</a>
+            <a href="#stories-en" class="btn-ghost">Read stories</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>DreamBaby Lab · FelDream Atelier</h3>
+          <p>
+            Digital art, ABDL aesthetics and original storytelling.  
+            ABDL Together, Otaku Forever.
+          </p>
+          <div class="pill-row">
+            <span class="pill">ADBL friendly</span>
+            <span class="pill">Original content</span>
+            <span class="pill">Pastel style</span>
+            <span class="pill">Safe for browsing</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sections-grid">
+        <article class="card" id="images-en">
+          <h3>Images and gallery</h3>
+          <p>
+            Illustrations, diaper designs, outfits, scenes and original characters
+            with ABDL aesthetics and otaku flavor.
+          </p>
+          <a href="#">Enter gallery</a>
+        </article>
+
+        <article class="card" id="stories-en">
+          <h3>ABDL stories and novels</h3>
+          <p>
+            Your stories and long projects, organized by sagas, chapters and language versions.
+          </p>
+          <a href="#">Read stories</a>
+        </article>
+
+        <article class="card" id="videos-en">
+          <h3>Videos and animations</h3>
+          <p>
+            Animation clips and video projects, embedded from your preferred platforms.
+          </p>
+          <a href="#">Watch videos</a>
+        </article>
+      </section>
+    </div>
+
+    <!-- JAPANESE -->
+    <div class="lang-block lang-jp">
+      <section class="hero">
+        <div>
+          <h2>ABDLアート・ストーリー・アニメーションのクリエイティブラボ</h2>
+          <p>
+            ここはDreamBaby Lab。FelDream AtelierによるABDLテイストとオタクスピリットを
+            取り入れたイラスト、小説、デザイン、動画を  
+            スペイン語・英語・日本語で発信するスペースです。
+          </p>
+          <div class="hero-badges">
+            <span class="badge">オリジナルイラスト</span>
+            <span class="badge">ABDLストーリー</span>
+            <span class="badge">アニメーション</span>
+            <span class="badge">トライリンガル ES · EN · 日本語</span>
+          </div>
+          <div class="hero-cta">
+            <a href="#images-jp" class="btn-primary">ギャラリーへ</a>
+            <a href="#stories-jp" class="btn-ghost">ストーリーを読む</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>DreamBaby Lab · FelDream Atelier</h3>
+          <p>
+            デジタルアート、ABDL美学、オリジナルストーリー。  
+            ABDL Together, Otaku Forever.
+          </p>
+          <div class="pill-row">
+            <span class="pill">ABDLフレンドリー</span>
+            <span class="pill">オリジナル作品</span>
+            <span class="pill">パステルスタイル</span>
+            <span class="pill">安心して閲覧可能</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sections-grid">
+        <article class="card" id="images-jp">
+          <h3>イメージ・ギャラリー</h3>
+          <p>オリジナルキャラクターやシーン、デザインなどの作品を展示。</p>
+          <a href="#">ギャラリーを見る</a>
+        </article>
+
+        <article class="card" id="stories-jp">
+          <h3>ストーリー・小説</h3>
+          <p>ABDLテーマの物語や連載作品を多言語で公開。</p>
+          <a href="#">ストーリーへ</a>
+        </article>
+
+        <article class="card" id="videos-jp">
+          <h3>動画・アニメーション</h3>
+          <p>オリジナル動画やアニメーション作品を紹介。</p>
+          <a href="#">動画を見る</a>
+        </article>
+      </section>
+    </div>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> DreamBaby Lab · FelDream Atelier  
+    · ABDL Together, Otaku Forever
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
